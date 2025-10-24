@@ -1,4 +1,5 @@
 package Ngay5_OOP.Abstract;
 
-public class Flyable {
+public interface Flyable {
+    void fly();
 }

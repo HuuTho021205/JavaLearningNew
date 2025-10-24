@@ -1,4 +1,8 @@
 package Ngay5_OOP.Abstract;
 
-public class Cat {
+public class Cat extends Animal{
+    @Override
+    public void makeSound(){
+        System.out.println("Meow Meow !");
+    }
 }
