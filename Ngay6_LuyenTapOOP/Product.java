@@ -24,5 +24,32 @@ Tạo một VendingMachine.
 Thêm vào đó vài Drink và Snack.
 Mô phỏng một người dùng: xem danh sách, bỏ tiền vào, mua một món hàng thành công,
 thử mua một món hàng quá đắt.*/
-public class Product {
+public abstract class Product {
+    private String name;
+    private double price;
+
+    public Product(){}
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public abstract String description();
 }
