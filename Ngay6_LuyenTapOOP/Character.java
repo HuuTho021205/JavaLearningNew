@@ -23,5 +23,47 @@ Tạo một đối tượng Player và một Monster.
 Tạo một đối tượng Battle và gọi startBattle() để bắt đầu trận đấu.
 Thử thách thêm: Làm sao để thêm "vật phẩm" (Items) vào game?
 Ví dụ như HealthPotion mà Player có thể sử dụng? (Gợi ý: tạo interface Usable).*/
-public class Character {
+public abstract class Character implements Damageable {
+    private String name;
+    private int hp;
+    private int attackPower;
+
+    public Character() {
+    }
+
+    public Character(String name, int hp, int attackPower) {
+        this.name = name;
+        this.hp = hp;
+        this.attackPower = attackPower;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    @Override
+    public void takeDamage(int damage){
+        hp-= damage;
+    }
+    public abstract void attack(Damageable target);
 }
