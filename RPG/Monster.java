@@ -11,6 +11,6 @@ public class Monster extends Character {
     }
     @Override
     public void showStartMessage(){
-        System.out.println(this.getName() + " GRRR");
+        System.out.println(this.getName() + " Gam len GRRR");
     }
 }

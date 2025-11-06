@@ -23,24 +23,26 @@ public class Inventory {
         System.out.println("Da them vat pham thanh cong ! ");
     }
 
-    public Item useItem(String itemName){
-        if(this.items.isEmpty()){
+    public Item useItem(String itemName) {
+        if (this.items.isEmpty()) {
             System.out.println("Tui do trong !");
             return null;
         }
         /*Không xóa khi đang duyệt bang foreach được
         Dùng iterator*/
-        Iterator<Item> iterator = this.items.iterator();
-        while (iterator.hasNext()){
-            Item item = iterator.next(); // Lấy vật phẩm
-            if(item.getItemName().equalsIgnoreCase(itemName)){
-                System.out.println("Su dung vat pham " + item.getItemName() + " thanh cong");
-                iterator.remove();
-                return item;
+        else {
+            Iterator<Item> iterator = this.items.iterator();
+            while (iterator.hasNext()) {
+                Item item = iterator.next(); // Lấy vật phẩm
+                if (item.getItemName().equalsIgnoreCase(itemName)) {
+                    System.out.println("Su dung vat pham " + item.getItemName() + " thanh cong");
+                    iterator.remove();
+                    return item;
+                }
             }
+            System.out.println("Khong tim thay vat pham ");
+            return null;
         }
-        System.out.println("Khong tim thay vat pham ");
-        return null;
     }
 
     public void printItem(){
