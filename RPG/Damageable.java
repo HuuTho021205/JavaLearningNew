@@ -1,4 +1,4 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
 
 public interface Damageable {
      void takeDamage(int damage);

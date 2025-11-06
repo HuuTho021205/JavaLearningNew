@@ -108,8 +108,8 @@ Hàm tạo là một "method đặc biệt" dùng để tạo ra object
 - Tất cả các class đều cần có "hàm tạo". Nếu bạn không tạo => java sẽ tự động tạo cho
 bạn (không có tham số đầu vào)
 Ví dụ:
-public Student (String name, int age){
-this.name = name;
+public Student (String itemName, int age){
+this.itemName = itemName;
 this.age = age;
 }
 # 2. Keyword this
@@ -171,7 +171,7 @@ P1 pObject = new P1();
 - che dấu data : public/private...
 ví dụ:
 public class Student {
-public String name;
+public String itemName;
 public int age;
 }
 public class MyClass{
@@ -195,7 +195,7 @@ Cho các lớp "con" thừa hưởng những thứ đó.
 
 Ví dụ (khi chưa có kế thừa):
 public class Dog {
-    public String name;
+    public String itemName;
     public void eat() { //Hành vi này bị lặp lại
         System.out.println("Eating...");
     }
@@ -204,7 +204,7 @@ public class Dog {
     }
 }
 public class Cat {
-    public String name;
+    public String itemName;
     public void eat() { //Hành vi này bị lặp lại
         System.out.println("Eating...");
     }
@@ -214,20 +214,20 @@ public class Cat {
 }
 # 1. Tạo lớp cha (Superclass) Tạo một lớp Animal chứa các đặc điểm chung.
 public class Animal {
-    public String name;
+    public String itemName;
     public void eat() {
         System.out.println("Eating...");
     }
 }
-# 2. Sử dụng keyword extends Cho Dog và Cat kế thừa từ Animal. Chúng sẽ tự động có name và eat().
+# 2. Sử dụng keyword extends Cho Dog và Cat kế thừa từ Animal. Chúng sẽ tự động có itemName và eat().
 public class Dog extends Animal {
-    // Không cần viết lại name và eat()
+    // Không cần viết lại itemName và eat()
     public void bark() {
         System.out.println("Gau gau!");
     }
 }
 public class Cat extends Animal {
-    // Không cần viết lại name và eat()
+    // Không cần viết lại itemName và eat()
     public void meow() {
         System.out.println("Meo meo!");
     }

@@ -1,4 +1,4 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
 
 import java.util.Scanner;
 
@@ -6,6 +6,10 @@ public class Battle {
     Scanner sc = new Scanner(System.in);
 
     public void startBattle(Player player, Monster monster){
+        player.getInventory().addItems(new Item("Bình máu nhỏ", 30));
+        player.getInventory().addItems(new Item("Bình máu nhỏ", 30));
+        player.showStartMessage();
+        monster.showStartMessage();
         while (player.getHp() > 0 && monster.getHp() >0){
             System.out.println("Luot cua Player !");
             System.out.println("1.Tan cong thuong ");
@@ -34,7 +38,7 @@ public class Battle {
                         }
                         break;
                     case 3:
-                        player.Healpotion(30);
+                        player.useHealPotion();
                         break;
                     default:
                         player.attack(monster);

@@ -1,4 +1,4 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
 
 public interface Usable {
     void Healpotion ( int heal);

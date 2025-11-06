@@ -1,4 +1,4 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
 
 public class MainBattle {
     public static void main(String[] args) {

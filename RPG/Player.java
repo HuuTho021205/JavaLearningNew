@@ -1,16 +1,29 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
 
-public class Player extends Character implements Usable{
+
+public class Player extends Character  {
     private int mana;
     private static final int MANACOST = 20 ;
-
+    private Inventory inventory;
     public Player(String name, int hp, int attackPower, int mana) {
         super(name, hp, attackPower);
         this.mana = mana;
+        this.inventory = new Inventory();
     }
 
     public Player() {
+        super();
+        this.inventory = new Inventory();
     }
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
 
     public int getMana() {
         return mana;
@@ -25,6 +38,11 @@ public class Player extends Character implements Usable{
         System.out.println("Player tan cong thuong !");
         target.takeDamage(getAttackPower());
     }
+
+    @Override
+    public void showStartMessage(){
+        System.out.println(this.getName() + " da san sang chien dau");
+    }
     public boolean castSpell(Damageable target){
          if( this.mana >= MANACOST){
              System.out.println("Player dung skill !");
@@ -38,11 +56,15 @@ public class Player extends Character implements Usable{
          }
          return false;
     }
-    @Override
-    public void Healpotion(int heal){
-        int currentHp = this.getHp();
-        int newhp = currentHp + heal;
-        this.setHp(newhp);
-        System.out.println("HP sau khi da su dung binh: " + this.getHp());
+    public void useHealPotion(){
+        Item potion = this.inventory.useItem("Binh mau nho");
+        if (potion != null){
+            this.setHp(this.getHp()+potion.getHealingAmount());
+            System.out.println("Hoi mau thanh cong ");
+        }
+        else
+            System.out.println("Khong con binh mau ");
     }
+
+
 }

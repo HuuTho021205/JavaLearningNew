@@ -1,4 +1,5 @@
-package Ngay6_LuyenTapOOP;
+package RPG;
+
 /*Tạo interface Damageable:
 Định nghĩa một "khả năng" bị tấn công.
 Có một phương thức void takeDamage(int damage);.
@@ -66,4 +67,5 @@ public abstract class Character implements Damageable {
         hp-= damage;
     }
     public abstract void attack(Damageable target);
+    public abstract void showStartMessage();
 }
