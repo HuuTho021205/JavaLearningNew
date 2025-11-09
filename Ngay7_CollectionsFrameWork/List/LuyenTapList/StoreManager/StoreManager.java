@@ -1,4 +1,8 @@
 package Ngay7_CollectionsFrameWork.List.LuyenTapList.StoreManager;
+
+import java.util.Iterator;
+import java.util.List;
+
 //Tạo lớp StoreManager (với các phương thức static)
 /*Viết phương thức static void applySale(List<Product> products, String category, double discountPercent)
 Phương thức này duyệt qua List, tìm tất cả sản phẩm thuộc category được chỉ định,
@@ -9,4 +13,38 @@ Phương thức này nhận vào danh sách sản phẩm và một danh sách t�
 Nó phải xóa các sản phẩm ra khỏi products nếu tên của chúng nằm trong outOfStockNames.
 Yêu cầu: Bạn bắt buộc phải dùng Iterator để*/
 public class StoreManager {
+    public static void applySale(List<Product> products, String category, double discountPercent){
+        int count = 0;
+        for (Product product : products){
+            if (product.getCategory().equalsIgnoreCase(category)){
+                double newPrice = product.getPrice()*(1.0 - discountPercent/100);
+                product.setPrice(newPrice);
+                count++;
+            }
+        }
+        System.out.println("Da ap dung ma giam gia cho "+ count + " san pham" );
+    }
+
+    public static void removeOutOfStock(List<Product> products, List<String> outOfStockNames){
+        Iterator<Product> iterator = products.iterator();
+        int findInt = 0;
+        while (iterator.hasNext()){
+            boolean find = false;
+            Product product = iterator.next();
+            for (String a : outOfStockNames){
+                if (product.getName().equalsIgnoreCase(a)){
+                    find = true;
+                    findInt+=1;
+                    break;
+                }
+            }
+            if (find){
+                iterator.remove();
+                System.out.println("Da xoa vat pham" +product.getName() +" vi het hang");
+            }
+        }
+        if (findInt == 0){
+            System.out.println("Khong tim thay san pham het hang");
+        }
+    }
 }

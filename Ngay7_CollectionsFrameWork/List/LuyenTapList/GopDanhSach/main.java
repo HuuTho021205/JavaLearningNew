@@ -13,4 +13,5 @@ Sau khi vòng lặp while kết thúc, một trong hai danh sách sẽ vẫn cò
 Dùng thêm 2 vòng lặp while nữa để thêm tất cả các phần tử còn lại vào mergedList.
 In ra mergedList. Kết quả phải là: [1, 3, 5, 6, 7, 8, 10, 12, 15, 16, 20]*/
 public class main {
+
 }
