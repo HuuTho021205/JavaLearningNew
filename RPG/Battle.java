@@ -29,8 +29,8 @@ public class Battle {
     Scanner sc = new Scanner(System.in);
 
     public void startBattle(Player player, List<Monster> monsters) {
-        player.getInventory().addItems(new Item("Binh mau nho", 30));
-        player.getInventory().addItems(new Item("Binh mau nho", 30));
+        player.getInventory().addItems("Binh mau nho",1);
+        player.getInventory().addItems("Binh mau nho", 3);
         player.showStartMessage();
         for (Monster monster : monsters){
             monster.showStartMessage();

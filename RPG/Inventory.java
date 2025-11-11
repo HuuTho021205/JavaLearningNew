@@ -1,47 +1,62 @@
 package RPG;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Inventory {
-    private ArrayList<Item> items;
+    private Map<String, Integer> items;
 
     public Inventory() {
-         this.items = new ArrayList();
+         this.items = new HashMap<>();
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
+    public Map<String, Integer> getItems() {
+        return Collections.unmodifiableMap(this.items);
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void clearInventory() {
+        this.items.clear();
     }
 
-    public void addItems(Item item){
-        items.add(item);
-        System.out.println("Da them vat pham thanh cong ! ");
-    }
-
-    public Item useItem(String itemName) {
-        if (this.items.isEmpty()) {
-            System.out.println("Tui do trong !");
-            return null;
+    public int addItems(String itemName, int amountToAdd){
+        if (amountToAdd <= 0){
+            throw new IllegalArgumentException("So luong them vao phai la so duong");
         }
-        /*Không xóa khi đang duyệt bang foreach được
-        Dùng iterator*/
+        int newQuantity =0;
+        if (items.containsKey(itemName)){
+            int oldCount = items.get(itemName);
+             newQuantity = oldCount + amountToAdd;
+            items.put(itemName, newQuantity);
+        }
         else {
-            Iterator<Item> iterator = this.items.iterator();
-            while (iterator.hasNext()) {
-                Item item = iterator.next(); // Lấy vật phẩm
-                if (item.getItemName().equalsIgnoreCase(itemName)) {
-                    System.out.println("Su dung vat pham " + item.getItemName() + " thanh cong");
-                    iterator.remove();
-                    return item;
-                }
+            newQuantity = amountToAdd;
+            items.put(itemName, newQuantity);
+
+        }
+        return newQuantity;
+    }
+
+    public boolean useItem(String itemName) {
+        if (this.items.isEmpty()) {
+            return false;
+        }
+        if (items.containsKey(itemName)) {
+            int oldCount = items.get(itemName);
+            if (oldCount > 1) {
+                int newCount = oldCount - 1;
+                items.put(itemName, newCount);
+
+            } else if (oldCount == 1) {
+                items.remove(itemName);
+
             }
-            System.out.println("Khong tim thay vat pham ");
-            return null;
+            return true;
+        } else {
+
+            return false;
         }
     }
 
@@ -51,11 +66,29 @@ public class Inventory {
         }
         else {
             System.out.println("Cac vat pham trong tui la :");
-            for (Item a : items) {
-                System.out.println(a.getItemName());
+            for (Map.Entry<String, Integer> a : items.entrySet()){
+                System.out.println("-"+ a.getKey() +": " + a.getValue());
             }
         }
     }
 
+    public Map<String, Integer> findItemByType(String type){
+        return this.items.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().contains(type))
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey(),
+                        entry -> entry.getValue()
+                ));
+    }
+    public Map<String, Integer> findItemWithQuantityGreaterThan(int amount){
+        return this.items.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > amount)
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey(),
+                        entry -> entry.getValue()
+                ));
+    }
 
 }
