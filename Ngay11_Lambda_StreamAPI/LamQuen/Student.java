@@ -1,4 +1,4 @@
-package Ngay11_Lambda_StreamAPI;
+package Ngay11_Lambda_StreamAPI.LamQuen;
 
 public class Student {
     private String name;

@@ -1,4 +1,4 @@
-package Ngay11_Lambda_StreamAPI;
+package Ngay11_Lambda_StreamAPI.LamQuen;
 
 import java.util.ArrayList;
 import java.util.List;
