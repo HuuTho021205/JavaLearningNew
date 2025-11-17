@@ -56,16 +56,4 @@ public class Player extends Character  {
          }
          return false;
     }
-    public void useHealPotion(){
-        boolean suDungThanhCong = this.inventory.useItem("Binh mau nho");
-        if (suDungThanhCong){
-            int healingAmount = 20;
-            this.setHp(this.getHp()+healingAmount);
-            System.out.println("Hoi mau thanh cong ");
-        }
-        else
-            System.out.println("Khong con binh mau ");
-    }
-
-
 }
