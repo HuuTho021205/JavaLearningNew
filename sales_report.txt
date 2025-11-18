@@ -1,0 +1,5 @@
+Báo cáo số lượng
+Product: Headphones Quantity: 1
+Product: Laptop Quantity: 3
+Product: Mouse Quantity: 2
+Product: Phone Quantity: 4

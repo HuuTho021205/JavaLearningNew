@@ -1,0 +1,8 @@
+INFO: Application started successfully.
+INFO: User 'huutho' logged in.
+DEBUG: Checking database connection...
+ERROR: NullPointerException at UserService.java:45
+INFO: User 'admin' logged in.
+WARN: Disk space is running low.
+ERROR: IOException: Cannot connect to payment gateway.
+INFO: Shutdown sequence initiated.

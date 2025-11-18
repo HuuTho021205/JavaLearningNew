@@ -1,0 +1,2 @@
+ERROR: NullPointerException at UserService.java:45
+ERROR: IOException: Cannot connect to payment gateway.
